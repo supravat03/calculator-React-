@@ -1,0 +1,43 @@
+.numberBtn{
+    width: 80px;
+    height: 80px;
+    padding: 20px;
+    border-radius: 50%;
+    margin: 3px;
+
+    font-size: 2rem;
+    color: white;
+    background-color: gray;
+    border: none;
+    cursor: pointer;
+    border: 1px solid black;
+
+}
+
+.symbolBtn{
+    width: 80px;
+    height: 80px;
+    padding: 10px;
+    border-radius: 50%;
+    margin: 3px;
+
+    font-size: 2rem;
+
+    cursor: pointer;
+    border: 1px solid black;
+
+
+}
+
+.equalBtn{
+    border-radius: 10px;
+    width: 100%;
+}
+
+.orange{
+    background-color: orange;
+}
+
+.lightGrey{
+    background-color: lightgrey;
+}

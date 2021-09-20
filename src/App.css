@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+
+.app_wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: fit-content;
+  background-color: black;
+  margin:50px auto;
+  padding: 10px 5px;
+  border-radius: 5px;
+}

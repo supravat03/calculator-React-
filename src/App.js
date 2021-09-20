@@ -1,25 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react";
+import "./App.css"
+import Display from "./components/display/Display"
+import Keypad from "./components/Keypad/Keypad";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+const App = () => {
+    const [expression, setExpression] = useState("");
+    const [result, setResult] = useState('0');
+
+
+    const clickHandler = (e) => {
+        const value = e.target.value;
+        switch (value) {
+            case "=":
+                if (expression !== "") {
+                    let ans = "";
+                    try {
+                        ans = eval(expression);
+                    } catch (err) {
+                        setResult("Error");
+                    }
+                    if (ans === undefined) {
+                        setResult("Error");
+                    } else setResult(ans);
+                }
+                break;
+            case "AC":
+                setExpression('')
+                setResult("0");
+                break;
+            case "Del":
+                let oldExpression = expression;
+                let newExpression = oldExpression.substr(0, oldExpression.length - 1);
+                setExpression(newExpression);
+                break;
+            default:
+                setExpression(`${expression}${value}`);
+                break;
+        }
+    };
+
+
+    const changeHandler = (e) => {
+        const {value}= e.target;
+        setExpression(value);
+    };
+
+    return (
+        <div className="app_wrapper">
+            <Display expression={expression} changeHandler={changeHandler} result={result}/>
+
+            <Keypad clickHandler={clickHandler}/>
+
+        </div>
+    );
+};
 
 export default App;
